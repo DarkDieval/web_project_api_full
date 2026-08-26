@@ -1,0 +1,523 @@
+.main {
+  max-width: 880px;
+  margin: auto;
+}
+
+.profile {
+  max-width: 880px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px repeat(3, 1fr);
+  grid-template-rows: 120px;
+  grid-gap: 30px;
+}
+
+.profile__image-container {
+  max-width: 120px;
+  width: 120px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.profile__image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__image-container:hover .profile__image-overlay {
+  opacity: 1;
+}
+
+.profile__image-edit-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  padding: 0;
+}
+
+.profile__image-edit-button:hover {
+  opacity: 0.8;
+}
+
+.profile__image-edit-icon {
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.profile__info-container {
+  display: grid;
+  grid-column: 2 / 4;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  grid-row-gap: 10px;
+  line-height: normal;
+}
+
+.profile__name {
+  grid-column: 1 / 4;
+  margin: 0;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.profile__job {
+  grid-column: 1 / 5;
+  grid-row: 2;
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.profile__button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+}
+
+.profile__button-edit {
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-left: 300px;
+}
+
+.profile__button-add {
+  width: 150px;
+  height: 50px;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-left: 65px;
+}
+
+.places {
+  max-width: 880px;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 50px;
+  margin-bottom: 67px;
+}
+
+.places__grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  gap: 17px;
+  padding: 0;
+  margin: 0;
+}
+
+.places__card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 282px;
+}
+
+.places__card-image {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  display: block;
+}
+
+.places__card-image:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.places__card-delete-button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 18px;
+  height: 19.3px;
+  background-image: url("../images/TrashCan.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 10;
+}
+
+.places__card-delete-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 3v1H4v2h1v13a2 2 0 002 2h10a2 2 0 002-2V6h1V4h-5V3H9zm0 5h2v9H9V8zm4 0h2v9h-2V8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.places__card-delete-button:hover {
+  opacity: 0.6;
+}
+
+.places__card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  color: #000;
+}
+
+.places__card-title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  font-family: "Inter-Black";
+}
+
+.places__card-like-button {
+  width: 21px;
+  height: 19px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  background-image: url("../images/LikeButton.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: opacity 0.2s;
+}
+
+.places__card-like-button_active {
+  background-image: url("../images/LikeButtonClic.png");
+}
+
+.places__card-like-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    margin-bottom: 36px;
+  }
+
+  .profile__image-container {
+    margin-bottom: 26px;
+  }
+
+  .profile__info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: auto;
+    grid-row-gap: 0;
+    margin-bottom: 36px;
+    width: 100%;
+  }
+
+  .profile__name {
+    font-size: 27px;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+    grid-column: auto;
+  }
+
+  .profile__job {
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0;
+    grid-column: auto;
+  }
+
+  .profile__button-edit {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    margin-top: 14px;
+    margin-left: 0;
+  }
+
+  .profile__button-add {
+    width: 100%;
+    max-width: 282px;
+    height: 42px;
+    font-size: 18px;
+    margin: 0;
+    align-self: center;
+    border: 1px solid #ffffff;
+  }
+
+  .places {
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .places__grid {
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 584px;
+  }
+
+  .places__card {
+    width: 100%;
+  }
+
+  .places__card-image {
+    width: 100%;
+    height: 282px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile {
+    margin-bottom: 30px;
+  }
+
+  .profile__image-container {
+    margin-bottom: 26px;
+  }
+
+  .profile__info-container {
+    margin-bottom: 36px;
+  }
+
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .profile__job {
+    font-size: 14px;
+    line-height: 17px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .profile__button-edit {
+    margin-top: 10px;
+  }
+
+  .profile__button-add {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .places {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+
+  .places__grid {
+    grid-template-columns: 1fr;
+    max-width: 282px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .places__card {
+    width: 100%;
+  }
+
+  .places__card-image {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 543px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile {
+    margin-bottom: 30px;
+  }
+
+  .profile__image-container {
+    margin-bottom: 26px;
+  }
+
+  .profile__info-container {
+    margin-bottom: 36px;
+  }
+
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .profile__job {
+    font-size: 14px;
+    line-height: 17px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .profile__button-edit {
+    margin-top: 10px;
+  }
+
+  .profile__button-add {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .places {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+
+  .places__grid {
+    grid-template-columns: 1fr;
+    max-width: 282px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .places__card {
+    width: 100%;
+  }
+
+  .places__card-image {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile {
+    margin-bottom: 30px;
+  }
+
+  .profile__image-container {
+    margin-bottom: 26px;
+  }
+
+  .profile__info-container {
+    margin-bottom: 36px;
+  }
+
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .profile__job {
+    font-size: 14px;
+    line-height: 17px;
+    max-width: 250px;
+    white-space: normal;
+  }
+
+  .profile__button-edit {
+    margin-top: 10px;
+  }
+
+  .profile__button-add {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .places {
+    margin-top: 36px;
+    margin-bottom: 48px;
+  }
+
+  .places__grid {
+    grid-template-columns: 1fr;
+    max-width: 282px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .places__card {
+    width: 100%;
+  }
+
+  .places__card-image {
+    width: 100%;
+  }
+}

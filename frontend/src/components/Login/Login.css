@@ -1,0 +1,79 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 60px 20px 20px;
+  box-sizing: border-box;
+}
+
+.login h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  font-family: "Inter-Medium", sans-serif;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 358px;
+  gap: 30px;
+}
+
+.login input {
+  background-color: #000000 !important;
+  border: none;
+  border-bottom: 2px solid #cccccc;
+  color: #ffffff !important;
+  padding: 10px 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  /* Forzar fondo negro en autocompletado */
+  -webkit-box-shadow: 0 0 0 1000px #000000 inset !important;
+  box-shadow: 0 0 0 1000px #000000 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.login input:focus {
+  border-bottom-color: #ffffff;
+}
+
+.login input::placeholder {
+  color: #cccccc !important;
+  -webkit-text-fill-color: #cccccc !important;
+}
+
+.login button {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 2px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin-top: 40px;
+}
+
+.login button:hover {
+  opacity: 0.8;
+}
+
+.login a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.login a:hover {
+  opacity: 0.8;
+}

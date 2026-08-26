@@ -1,0 +1,107 @@
+.header {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  box-sizing: border-box;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header__logo {
+  width: 280px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.header__user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.header__email {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.header__logout {
+  background: none;
+  border: none;
+  color: #a9a9a9;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.header__logout:hover {
+  color: #ffffff;
+}
+
+.header__login-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 22px;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+.header__login-link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 28px 27px 31px;
+    box-sizing: border-box;
+  }
+  .header__logo {
+    width: 160px;
+    height: auto;
+  }
+  .header__email {
+    font-size: 14px;
+  }
+  .header__logout {
+    font-size: 14px;
+  }
+  .header__login-link {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 18px 15px 20px;
+  }
+  .header__logo {
+    width: 120px;
+  }
+  .header__email {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .header__logout {
+    font-size: 12px;
+  }
+  .header__login-link {
+    font-size: 12px;
+  }
+}
