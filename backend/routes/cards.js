@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const auth = require("../middlewares/auth"); // <-- Agrega esta línea
 const {
   getCards,
   createCard,
@@ -10,6 +11,8 @@ const {
   validateCreateCard,
   validateCardId,
 } = require("../middlewares/validation");
+
+router.use(auth);
 
 router.get("/", getCards);
 router.post("/", validateCreateCard, createCard);

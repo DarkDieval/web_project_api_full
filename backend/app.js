@@ -66,7 +66,7 @@ const usersRouter = require("./routes/users");
 const cardsRouter = require("./routes/cards");
 
 app.use("/users", usersRouter);
-app.use("/cards", auth, cardsRouter);
+app.use("/cards", cardsRouter);
 
 app.use((req, res) => {
   res.status(404).send({ message: "Recurso no encontrado" });

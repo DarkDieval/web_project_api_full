@@ -5,11 +5,13 @@ class Api {
   }
 
   _getHeaders() {
+    const token = localStorage.getItem("token");
     const headers = {
-      authorization: "d11db2d5-31b2-4646-8072-b29a422effa5",
       "Content-Type": "application/json",
     };
-
+    if (token) {
+      headers.authorization = `Bearer ${token}`;
+    }
     return headers;
   }
 
@@ -77,7 +79,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  baseUrl: "https://api.around.mooo.com",
   headers: {
     "Content-Type": "application/json",
   },

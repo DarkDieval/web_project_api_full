@@ -44,8 +44,8 @@ function App() {
 
     Promise.all([api.getUserInfo(), api.getCardList()])
       .then(([userData, cardData]) => {
-        setCurrentUser(userData);
-        setCards(cardData);
+        setCurrentUser(userData.data || userData);
+        setCards(cardData.data || cardData);
       })
       .catch((error) =>
         console.error("Error al cargar datos iniciales:", error),
@@ -55,34 +55,31 @@ function App() {
   const handleUpdateUser = (data) => {
     api
       .setUserInfo(data)
-      .then((newUserData) => setCurrentUser(newUserData))
+      .then((newUserData) => {
+        setCurrentUser(newUserData.data || newUserData);
+      })
       .catch((error) => console.error("Error:", error));
   };
 
   const handleUpdateAvatar = (data) => {
     api
       .setUserAvatar(data)
-      .then((newUserData) => setCurrentUser(newUserData))
+      .then((newUserData) => {
+        setCurrentUser(newUserData.data || newUserData);
+      })
       .catch((error) => console.error("Error al actualizar avatar:", error));
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.isLiked || false;
+    const isLiked =
+      card.likes?.some((likeId) => likeId === currentUser._id) || false;
+
     api
       .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
+      .then((updatedCard) => {
+        const cardData = updatedCard.data || updatedCard;
         setCards((prevCards) =>
-          prevCards.map((c) => {
-            if (c._id === card._id) {
-              const updatedLikes = newCard.isLiked
-                ? [...(c.likes || []), currentUser]
-                : (c.likes || []).filter(
-                    (like) => like._id !== currentUser._id,
-                  );
-              return { ...c, likes: updatedLikes, isLiked: newCard.isLiked };
-            }
-            return c;
-          }),
+          prevCards.map((c) => (c._id === card._id ? cardData : c)),
         );
       })
       .catch((err) => console.error("Error al dar/quitar like:", err));
@@ -92,7 +89,8 @@ function App() {
     api
       .addCard(newCardData)
       .then((newCard) => {
-        setCards((prevCards) => [newCard, ...prevCards]);
+        const cardData = newCard.data || newCard;
+        setCards((prevCards) => [cardData, ...prevCards]);
       })
       .catch((err) => console.error("Error al añadir tarjeta:", err));
   };
@@ -135,12 +133,19 @@ function App() {
     auth
       .register(email, password)
       .then((data) => {
-        if (data.data) {
+        if (data._id || data.email) {
           openInfoTooltip(
             "¡Registro exitoso! Ahora puedes iniciar sesión.",
             true,
           );
-          navigate("/signin");
+          setTimeout(() => {
+            navigate("/signin");
+          }, 2000);
+        } else {
+          openInfoTooltip(
+            "Error al registrarse. Intenta con otro email o verifica tus datos.",
+            false,
+          );
         }
       })
       .catch((err) => {

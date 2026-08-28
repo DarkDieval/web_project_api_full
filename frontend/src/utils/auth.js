@@ -1,4 +1,4 @@
-const BASE_URL = "https://se-register-api.en.tripleten-services.com/v1";
+const BASE_URL = "https://api.around.mooo.com";
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
@@ -11,7 +11,10 @@ export const register = (email, password) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Error: ${res.status}`);
+    return res.text().then((text) => {
+      console.error("Error response body:", text);
+      return Promise.reject(`Error: ${res.status} - ${text}`);
+    });
   });
 };
 
@@ -42,6 +45,9 @@ export const getUserInfo = (token) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Error: ${res.status}`);
+    return res.text().then((text) => {
+      console.error("Error response body:", text);
+      return Promise.reject(`Error: ${res.status} - ${text}`);
+    });
   });
 };
